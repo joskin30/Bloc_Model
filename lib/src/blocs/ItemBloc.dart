@@ -26,7 +26,7 @@ class BaseBloc<T> {
 
 }
 
-//Aqui extiendo de la case BaseBloc y le pago como parametro la clase ItemModel esto ocaciona que todas las funciones anteriores se creen 
+//Aqui extiendo de la clase BaseBloc y le paso como parametro la clase ItemModel esto ocaciona que todas las funciones que hereda se creen 
 //parte de ItemModel
 class ItemT extends BaseBloc<ItemModel>{
   void fill(){
