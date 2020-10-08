@@ -1,4 +1,4 @@
-import 'package:Bloc_Model/src/ui/MovieList.dart';
+import 'package:Bloc_Model/src/ui/ItemList.dart';
 import 'package:flutter/material.dart';
 
 void main() {

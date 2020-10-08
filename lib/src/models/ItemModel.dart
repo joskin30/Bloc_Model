@@ -1,4 +1,4 @@
-
+//Modelo de Items
 class ItemModel {
   String _nama;
   double _latitude;
@@ -6,6 +6,7 @@ class ItemModel {
   String _alamat;
   String _telepon;
 
+  //Deserializar el Json
   ItemModel.fromJson(Map<String, dynamic> parsedJson) {
     _nama = parsedJson['nama'];
     _latitude = parsedJson['latitude'];
@@ -14,6 +15,7 @@ class ItemModel {
     _telepon = parsedJson['telepon'];
   }
 
+  //Serializar el Json
   Map<String, dynamic> toJson() => {
     "_nama": _nama,
     "latitude": latitude,
@@ -22,6 +24,7 @@ class ItemModel {
     "telepon": telepon,
   };
   
+  //Obtener Valor de cada atributo
   String get name => _nama;
   double get latitude => _latitude;
   double get longitude => _longitude;

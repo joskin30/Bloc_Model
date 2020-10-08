@@ -1,18 +1,35 @@
-import 'package:Bloc_Model/src/blocs/moviebloc.dart';
+import 'package:Bloc_Model/src/blocs/ItemBloc.dart';
 import 'package:Bloc_Model/src/models/ItemModel.dart';
 import 'package:flutter/material.dart';
 
-class MovieList extends StatelessWidget {
-  
+
+
+class MovieList extends StatefulWidget {
+  @override
+  _MovieListState createState() => _MovieListState();
+}
+
+class _MovieListState extends State<MovieList> { 
+
+  @override
+  void initState() { 
+    super.initState();
+    blocT.fill();
+  }
+
+  @override
+  void dispose() { 
+    blocT.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
-    bloc.fetchAllMovies();
     return Scaffold(
       appBar: AppBar(
         title: Text('Popular Movies'),
       ),
       body: StreamBuilder(
-        stream: bloc.allMovies,
+        stream: blocT.counterStream,
         builder: (context, AsyncSnapshot<List<ItemModel>> snapshot) {
           if (snapshot.hasData) {
             return buildList(snapshot);
@@ -30,7 +47,14 @@ class MovieList extends StatelessWidget {
       itemCount: snapshot.data.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
       itemBuilder: (BuildContext context, int index) {
-        return Center(child: Text(snapshot.data[index].name));
+        return Column(
+          children: [
+            Text(snapshot.data[index].name),
+            Text(snapshot.data[index].alamat),
+            Text(snapshot.data[index].latitude.toString()),
+            Text(snapshot.data[index].longitude.toString()),
+          ],
+        );
       }
     );
   }
